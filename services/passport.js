@@ -10,7 +10,7 @@ const localOptions = {usernameField: 'email'};
 const localLogin = new LocalStrategy(localOptions, function(email, password, done) {
   // Check if email and password matches the one in database
   // If they are correct, call done with userSchema. Else, call done with false
-  User.find(email, function(err, user) {
+  User.findOne({email}, function(err, user) {
     if(err) {
       return done(err);
     }
